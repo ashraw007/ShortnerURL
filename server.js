@@ -1,16 +1,12 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const ShortUrl = require("./models/shortUrl");
+import express from "express";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import ShortUrl from "./models/shortUrl.js";
+
+dotenv.config();
 const app = express();
 
-mongoose.connect(
-  "mongodb+srv://ashish9759257747:ashraw98@cluster0.dpavxyg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
-
+connectDB();
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
